@@ -1,0 +1,38 @@
+
+PLAY [config_ops445] ***********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [cdcachero]
+
+TASK [update apache] ***********************************************************
+ok: [cdcachero]
+
+TASK [install EPEL release] ****************************************************
+ok: [cdcachero]
+
+TASK [remove 'tree' package] ***************************************************
+ok: [cdcachero]
+
+TASK [set hostname to seneca id] ***********************************************
+ok: [cdcachero]
+
+TASK [create new seneca user with sudo access] *********************************
+ok: [cdcachero]
+
+TASK [Configure ssh access for new user] ***************************************
+ok: [cdcachero]
+
+TASK [Setup directory structure for labs] **************************************
+ok: [cdcachero] => (item=1)
+ok: [cdcachero] => (item=2)
+ok: [cdcachero] => (item=3)
+ok: [cdcachero] => (item=4)
+ok: [cdcachero] => (item=5)
+ok: [cdcachero] => (item=6)
+ok: [cdcachero] => (item=7)
+ok: [cdcachero] => (item=8)
+ok: [cdcachero] => (item=9)
+
+PLAY RECAP *********************************************************************
+cdcachero                  : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
