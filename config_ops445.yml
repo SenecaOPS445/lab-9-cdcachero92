@@ -1,4 +1,4 @@
-- name: Carole Desiree Cachero config file
+- name: config_ops445
   hosts: cdcachero
   user: student
   become: yes
@@ -7,10 +7,12 @@
     motd_warning: "WARNING: used by ICT faculty/students only.\n"
     testserver: yes
   tasks:
-    - name: install apache
-      action: yum name=httpd state=installed
-    
-    - name: restart apache
-      service: 
-        name: httpd
-        state: restarted
+    - name: update apache
+      yum:
+        name: httpd 
+        state: latest
+
+    - name: install EPEL release
+      yum:      
+        name: epel-release 
+        state: present
