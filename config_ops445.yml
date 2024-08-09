@@ -16,3 +16,31 @@
       yum:      
         name: epel-release 
         state: present
+
+    - name: remove 'tree' package
+      yum:
+        name: tree
+        state: absent
+
+    - name: set hostname to seneca id
+      hostname:
+        name: cdcachero
+
+    - name: create new seneca user with sudo access
+      user:
+        name: cdcachero
+        shell: /bin/bash
+        groups: wheel
+        create_home: yes
+
+    - name: Configure ssh access for new user
+      authorized_key:
+        user: cdcachero
+        state: present
+        key: "{{ lookup('file', '/home/cdcachero/.ssh/id_rsa.pub') }}" 
+
+    - name: Setup directory structure for labs
+      file:
+        path: "/home/cdcachero/ops445/lab{{item}}"
+        state: directory
+      loop: "{{ range(1, 10) | list }}"
